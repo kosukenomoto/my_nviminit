@@ -252,10 +252,23 @@ require("lazy").setup({
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
       },
       opts = {
+        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+        popup_border_style = "rounded",
         source_selector = {
             winbar = true,
-            statusline = true, 
-        }
+            statusline = false,
+        },
+        filesystem = {
+          filtered_items = {
+            visible = true, -- when true, they will just be displayed differently than normal items
+            hide_dotfiles = false,
+            hide_gitignored = true,
+            hide_hidden = true, -- only works on Windows for hidden files/directories
+          },
+          bind_to_cwd = false,
+          follow_current_file = { enabled = true },
+          use_libuv_file_watcher = true,
+        },
       }
     }
 
