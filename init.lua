@@ -191,7 +191,16 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-
+    {
+      "folke/flash.nvim",
+      opts = {
+        modes = {
+          char = {
+            jump_labels = true
+          }
+        }
+      }
+    },
     { -- Useful plugin to show you pending keybinds.
       'folke/which-key.nvim',
       event = 'VimEnter', -- Sets the loading event to 'VimEnter'
