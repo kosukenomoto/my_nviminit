@@ -95,7 +95,9 @@ keymap("n", "<leader>p", [[:execute 'cd' fnameescape(substitute(@+,'\n','',''))<
 keymap("n", "<leader>.", [[:execute 'cd' fnameescape(substitute(expand('%:p:h'),'\n','',''))<CR>]],opts )
 keymap("n", "<leader>e", "<cmd>Neotree toggle<cr>", opts)
 keymap("n", "<leader>o", "<cmd>Neotree focus<cr>", opts)
+keymap("n", "<leader>w", ":w<cr>", opts)
 keymap("n", "<leader>fs", "<cmd>Telescope session-lens<cr>", opts)
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 
 -- terminal
 keymap("n", "tt", ":terminal<CR>", opts)
@@ -112,7 +114,7 @@ keymap("n", "s,", "<cmd>bprev<CR>",opts)
 keymap("n", "s.", "<cmd>bnext<CR>",opts)
 keymap("n", "<C-w>m", "<CMD>WinShift<CR>", opts)
 keymap("n", "<C-w>e", "<CMD>WinResizerStartResize<CR>", opts)
-
+keymap("n", "<C-q>", ":qa!<CR>", opts)
 
 -- Insert --
 -- Press jj fast to exit insert mode
@@ -129,7 +131,7 @@ keymap("t", "<C-w>h", "<CMD>wincmd h<CR>", opts)
 keymap("t", "<C-w>k", "<CMD>wincmd k<CR>", opts)
 keymap("t", "<C-w>l", "<CMD>wincmd l<CR>", opts)
 keymap("t", "<C-w>m", "<CMD>WinShift<CR>", opts)
-keymap("t", "<C-q>", "<C-\\><C-n>:q<CR>", opts)
+keymap("t", "<C-q>", "<C-\\><C-n>:qa!<CR>", opts)
 keymap("t", "<C-w>e", "<CMD>WinResizerStartResize<CR>", opts)
 
 
@@ -297,7 +299,7 @@ require("lazy").setup({
             hide_gitignored = true,
             hide_hidden = true, -- only works on Windows for hidden files/directories
           },
-          bind_to_cwd = false,
+          bind_to_cwd = true,
           follow_current_file = { enabled = true },
           use_libuv_file_watcher = true,
         },
